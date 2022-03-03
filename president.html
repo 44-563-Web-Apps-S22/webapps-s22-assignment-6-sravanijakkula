@@ -1,40 +1,109 @@
 <!DOCTYPE html>
 <html>
-     <head><title>Main file</title>
-        <h1>President guess by Sravani Jakkula</h1></head>
+ <head>
+     <title>President.html</title>
+ </head>
+ president css
+
+<style>
+    label {
+        display: inline-block;
+        width: 220px;
+    }
+    
+    p {
+        background-color: rgb(91, 72, 196);
+        color: rgb(156, 100, 142);
+        display: inline;
+    }
+    
+    p:hover {
+        background-color: rgba(93, 202, 216, 0.158);
+        color: rgba(37, 43, 41, 0.473);
+        display: inline;
+    }
+    
+    h2 {
+        background-color: rgb(65, 197, 124);
+        color: rgb(19, 53, 32);
+        display: inline-block;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    </style>
 <body>
+<h1>President guess by Sravani Jakkula</h1>
 <h2>Getting input</h2>
-<form>
-    <label for="default_name">Enter the secret president name </label>
-    <input type ="password" id="default_name" value="George Washington" min=10 max=50 step=2 > <br>
-    <br>
-    <label for="guess_name">Guess the president</label>
-    <input type ="text" id="guess_name" autofocus> <br>
-    <br>
-    <input type="button" onclick="checkGuess()" value="Check the guess">
+
+<div class = "container">
+    <form>
+        <label for="form_age">Enter the secret president name </label>
+        <input type ="password" id="form_age" name="form_age" min=10 max=50 step=2 value= "George Washington"> <br>
+    
+        <label for="form_nick"> Guess the president </label>
+        <input type ="text" id="form_nick" name="form_nick" autofocus> <br>
+    
+        <input type="button" onclick="checkGuess()" value="Check the guess">
     </form>
+   </div>
+<div class = "container">
+    <br>
     <p id="result">This text will be replaced </p>
-    <script>
-    let correct=0;
-    let wrong=0;
-    function checkGuess(){
-    let defaultPresidentName = document.getElementById("default_name").value
-    let guessPresidentName = document.getElementById("guess_name").value
-    let outputElement = document.getElementById("result");
-    if(defaultPresidentName==guessPresidentName){
-    correct=correct+1;
-    outputElement.innerHTML=alert("You got it right");
-    outputText="count for correct match : " + correct;
-    outputElement.textContent=outputText;
-    } else {
-    wrong=wrong+1;
-    outputElement.innerHTML=alert("Wrong president");
-    outputElement.textContent=wrong;
-    outputText="count for wrong match : " + wrong;
-    outputElement.textContent=outputText;
-    }
-    }
+</div><br>
+<script> 
+let correct = 0;
+let wrong = 0;
+var countNew = 0;
+function checkGuess (){
+console.log("Getting form values")
+passwordValue = document.getElementById("form_age").value
+textValue = document.getElementById("form_nick").value
+
+outputElement = document.getElementById("result")
+if(passwordValue==textValue){
+    countNew = 0;
+    correct = correct + 1;
+    outputElement.innerHTML = "correct : " + correct +"wrong : " + wrong
+    alert("You got it right")  
+} else {
+    countNew = countNew + 1;
+    wrong = wrong + 1;
+    outputElement.innerHTML = "correct : " + correct + "wrong : " + wrong
+    alert("Wrong President")
+    if (countNew >=3){
+        if (wrong >=3){
+            incorrectcheckGuess()
+         }
+     }
+ }
+}
+function incorrectcheckGuess(){
+alert("Sorry, game over.")
+}
 </script>
+<br>    
+<div>
+    <img src="Ashy tit.jfif" id="im" width="100" height="100" onclick="swapImage()">
+    <script>
+        var useImage=1;
+        function swapImage(){
+            switch(useImage){
+                case 1:
+                document.getElementById('im').src="javan myna.jfif";
+                useImage=2;
+                break;
+                case 2:
+                document.getElementById('im').src="King rail.jfif";
+                useImage=3;
+                break;
+                case 3:
+                document.getElementById('im').src="Ashy tit.jfif";
+               useImage=1;
+                break;
+            }
+        }
+    </script>
+
+</div>
 
 </body>
 </html> 
